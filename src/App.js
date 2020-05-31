@@ -13,7 +13,7 @@ const App = () => {
       <div className="app">
         <Filter />
         <Route path="/" component={List} exact />
-        <Route path="/details" component={Details} exact />
+        <Route path="/details/:id/" component={Details} exact />
         <Route path="/ability" component={Ability} exact />
       </div>
     </Router>

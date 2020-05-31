@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 import { namesFetch } from './../../actions/names'
 import './list.scss'
 
@@ -16,8 +16,8 @@ const List = ({ namesData, namesFetch }) => {
       <ul key={item.id}>
         <li>{item.name}</li>
         <Link to={`/details/${item.id}`}>
-            <img src="https://via.placeholder.com/220x150" alt="" />
-          </Link>
+          <img src="https://via.placeholder.com/220x150" alt="" />
+        </Link>
       </ul>
     )
   })
@@ -27,7 +27,7 @@ const List = ({ namesData, namesFetch }) => {
 }
 
 const mapStateToProps = state => ({
-  namesData: state
+  namesData: state.names
 })
 
 export default connect(mapStateToProps, { namesFetch })(List)
