@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './details.scss'
 
-import { detailsFetch } from './../../actions/details'
-import backImg from "./../../assets/backImg.png"
+import backImg from './../../assets/backImg.png'
 
-const Details = props => {
-  const id = props.match.params.id
-  const { loading, err } = props.detailsData
+const Details = ({ detailsData, history }) => {
+  const { loading, err } = detailsData
   const {
     name,
     abilities,
@@ -18,12 +15,7 @@ const Details = props => {
     defense,
     attack,
     hitPoints
-  } = props.detailsData.details
-
-  const { detailsFetch } = props
-  useEffect(() => {
-    detailsFetch(id)
-  }, [detailsFetch, id])
+  } = detailsData.details
 
   const ability =
     abilities &&
@@ -68,7 +60,7 @@ const Details = props => {
         <h3 className="details__abilities-title">Ability</h3>
         <ul className="details__abilities-items">{ability}</ul>
       </div>
-      <span onClick={() => props.history.goBack()} className="action-back">
+      <span onClick={() => history.goBack()} className="action-back">
         <img className="action-back__img" src={backImg} alt="" />
         Back
       </span>
@@ -76,12 +68,4 @@ const Details = props => {
   )
 }
 
-const mapStateToProps = state => ({ detailsData: state.details })
-
-const mapDispatchToProps = dispatch => {
-  return {
-    detailsFetch: id => dispatch(detailsFetch(id))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+export default Details
