@@ -45,6 +45,7 @@ export default class pokeService {
     return {
       abilities,
       type,
+      name: details.forms[0].name,
       imgPoke: details.sprites.front_default,
       speed: details.stats[0].base_stat,
       defense: details.stats[3].base_stat,

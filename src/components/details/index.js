@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import './details.scss'
 
 import { detailsFetch } from './../../actions/details'
+import backImg from "./../../assets/backImg.png"
 
 const Details = props => {
   const id = props.match.params.id
   const { loading, err } = props.detailsData
   const {
+    name,
     abilities,
     type,
     imgPoke,
@@ -26,20 +28,24 @@ const Details = props => {
   const ability =
     abilities &&
     abilities.map(e => (
-      <ul key={e.id}>
-        <li>
-          <Link to={`/ability/${e.id}`}>{e.name}</Link>
-        </li>
-      </ul>
+      <li key={e.id} className="details__abilities-item">
+        <Link to={`/ability/${e.id}`} className="details__abilities-link">
+          {e.name}
+        </Link>
+      </li>
     ))
 
   return loading ? (
-    <p>Loading...</p>
+    <p className="loading">Loading...</p>
   ) : err ? (
     <p>{err}</p>
   ) : (
     <div className="details">
-      <h1 className="details__title">Name</h1>
+      <h1 className="details__title">{name}</h1>
+      <p className="details__type">{type}</p>
+      <div className="details__img">
+        <img src={imgPoke} alt="" />
+      </div>
       <div className="details__feature-block">
         <div className="details__item">
           <h3 className="details__item-title">Hit Points</h3>
@@ -58,18 +64,14 @@ const Details = props => {
           <p className="details__item-num">{speed}</p>
         </div>
       </div>
-      <div className="details__img">
-        <img src={imgPoke} alt="" />
-      </div>
-      <div className="details__type">
-        <h3 className="details__type-title">Type</h3>
-        <p className="details__type-name">{type}</p>
-      </div>
       <div className="details__abilities">
         <h3 className="details__abilities-title">Ability</h3>
-        {ability}
+        <ul className="details__abilities-items">{ability}</ul>
       </div>
-      <button onClick={() => props.history.goBack()}>Back</button>
+      <span onClick={() => props.history.goBack()} className="action-back">
+        <img className="action-back__img" src={backImg} alt="" />
+        Back
+      </span>
     </div>
   )
 }

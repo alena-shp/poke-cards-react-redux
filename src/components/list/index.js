@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { namesFetch } from './../../actions/names'
 import { getFilteredName } from './../../selectors'
 import './list.scss'
+import Filter from './../filter'
 
 const List = ({ namesData, namesFetch, filteredNames }) => {
   console.log(namesData)
-  const { loading, names, err } = namesData
+  const { loading, err } = namesData
   useEffect(() => {
     namesFetch()
   }, [namesFetch])
@@ -16,17 +17,30 @@ const List = ({ namesData, namesFetch, filteredNames }) => {
     filteredNames.names &&
     filteredNames.names.map(item => {
       return (
-        <ul key={item.id}>
-          <li>{item.name}</li>
-          <Link to={`/details/${item.id}`}>
-            <img src="https://via.placeholder.com/220x150" alt="" />
-          </Link>
-        </ul>
+        <Link to={`/details/${item.id}`} className="list__item" key={item.id}>
+          <p className="list__item-name">{item.name}</p>
+          <img
+            className="list__item-img"
+            src="https://via.placeholder.com/200x150"
+            alt=""
+          />
+        </Link>
       )
     })
 
-  const content = loading ? <p>Loading...</p> : err ? <p>{err}</p> : listItem
-  return <div className="list">{content}</div>
+  const content = loading ? (
+    <p className="loading">Loading...</p>
+  ) : err ? (
+    <p>{err}</p>
+  ) : (
+    listItem
+  )
+  return (
+    <div className="list">
+      <Filter />
+      <div className="list__items">{content}</div>
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({

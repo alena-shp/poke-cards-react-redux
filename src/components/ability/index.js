@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './ability.scss'
 
 import { abilityFetch } from './../../actions/ability'
+import backImg from "./../../assets/backImg.png"
 
 const Ability = props => {
   const id = props.match.params.id
@@ -14,14 +15,15 @@ const Ability = props => {
   }, [abilityFetch, id])
 
   return loading ? (
-    <p>Loading...</p>
+    <p className="loading">Loading...</p>
   ) : err ? (
     <p>{err}</p>
   ) : (
     <div className="ability">
-      <h1 className="ability__title">Ability</h1>
       <p className="ability__text">{ability}</p>
-      <button onClick={() => props.history.goBack()}>Back</button>
+      <span onClick={() => props.history.goBack()} className="action-back">
+        <img className="action-back__img" src={backImg} alt=""/>
+        Back</span>
     </div>
   )
 }

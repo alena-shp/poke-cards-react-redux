@@ -1,0 +1,17 @@
+.ability {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    background-color: #ddf4ff;
+    border: 1px solid #ddf4ff;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    margin: 0 auto;
+    line-height: 1.4;
+    padding: 1rem;
+    text-align: center;
+    width: 60%;
+  }
+}
