@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import './filter.scss'
-import { filterPokemon } from "./../../actions/filter"
+import { filterPokemon } from './../../actions/filter'
 
 const Filter = ({ filterPokemon }) => {
-  const [filterName, setFilterName] = useState("")
+  const [filterName, setFilterName] = useState('')
 
-  const onChangeName = (e) => {
+  const onChangeName = e => {
     const filterName = e.target.value
     setFilterName(filterName)
     filterPokemon(filterName)
@@ -24,7 +24,7 @@ const Filter = ({ filterPokemon }) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  filterPokemon: (filterName) => dispatch(filterPokemon(filterName)),
+const mapDispatchToProps = dispatch => ({
+  filterPokemon: filterName => dispatch(filterPokemon(filterName))
 })
 export default connect(null, mapDispatchToProps)(Filter)

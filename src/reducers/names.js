@@ -1,13 +1,13 @@
 import {
   NAMES_DATA_REQUEST,
   NAMES_DATA_SUCCESS,
-  NAMES_DATA_FAILURE,
-} from "../types"
+  NAMES_DATA_FAILURE
+} from '../types'
 
 const initialNamesData = {
   loading: false,
   names: [],
-  err: "",
+  err: ''
 }
 
 const namesReducer = (state = initialNamesData, action) => {
@@ -15,19 +15,19 @@ const namesReducer = (state = initialNamesData, action) => {
     case NAMES_DATA_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       }
     case NAMES_DATA_SUCCESS:
       return {
         loading: false,
         names: action.payload,
-        err: "",
+        err: ''
       }
     case NAMES_DATA_FAILURE:
       return {
         loading: false,
         names: [],
-        err: action.payload,
+        err: action.payload
       }
     default:
       return state

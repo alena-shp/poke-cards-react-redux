@@ -1,13 +1,13 @@
 import {
   ABILITY_DATA_REQUEST,
   ABILITY_DATA_SUCCESS,
-  ABILITY_DATA_FAILURE,
-} from "../types"
+  ABILITY_DATA_FAILURE
+} from '../types'
 
 const initialAbilityData = {
   loading: false,
-  ability: "",
-  err: "",
+  ability: '',
+  err: ''
 }
 
 const abilityReducer = (state = initialAbilityData, action) => {
@@ -15,19 +15,19 @@ const abilityReducer = (state = initialAbilityData, action) => {
     case ABILITY_DATA_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: true
       }
     case ABILITY_DATA_SUCCESS:
       return {
         loading: false,
         ability: action.payload,
-        err: "",
+        err: ''
       }
     case ABILITY_DATA_FAILURE:
       return {
         loading: false,
-        ability: "",
-        err: action.payload,
+        ability: '',
+        err: action.payload
       }
     default:
       return state

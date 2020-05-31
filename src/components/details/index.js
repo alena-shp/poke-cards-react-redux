@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 import './details.scss'
 
 import { detailsFetch } from './../../actions/details'
@@ -8,7 +8,15 @@ import { detailsFetch } from './../../actions/details'
 const Details = props => {
   const id = props.match.params.id
   const { loading, err } = props.detailsData
-  const { abilities, type, imgPoke, speed, defense, attack, hitPoints } = props.detailsData.details
+  const {
+    abilities,
+    type,
+    imgPoke,
+    speed,
+    defense,
+    attack,
+    hitPoints
+  } = props.detailsData.details
 
   const { detailsFetch } = props
   useEffect(() => {
@@ -17,7 +25,7 @@ const Details = props => {
 
   const ability =
     abilities &&
-    abilities.map((e) => (
+    abilities.map(e => (
       <ul key={e.id}>
         <li>
           <Link to={`/ability/${e.id}`}>{e.name}</Link>

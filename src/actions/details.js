@@ -1,6 +1,10 @@
 import pokeService from './../service/pokeService'
 
-import { DETAILS_DATA_REQUEST, DETAILS_DATA_SUCCESS, DETAILS_DATA_FAILURE } from '../types'
+import {
+  DETAILS_DATA_REQUEST,
+  DETAILS_DATA_SUCCESS,
+  DETAILS_DATA_FAILURE
+} from '../types'
 
 export const detailsDataRequest = () => ({ type: DETAILS_DATA_REQUEST })
 

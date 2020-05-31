@@ -1,7 +1,7 @@
-import { FILTER_POKEMON } from "../types"
+import { FILTER_POKEMON } from '../types'
 
 const initialFilterName = {
-  filterName: "",
+  filterName: ''
 }
 
 const filterReducer = (state = initialFilterName, action) => {
@@ -9,7 +9,7 @@ const filterReducer = (state = initialFilterName, action) => {
     case FILTER_POKEMON:
       return {
         ...state,
-        filterName: action.payload,
+        filterName: action.payload
       }
     default:
       return state

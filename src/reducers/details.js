@@ -1,4 +1,8 @@
-import { DETAILS_DATA_REQUEST, DETAILS_DATA_SUCCESS, DETAILS_DATA_FAILURE } from '../types'
+import {
+  DETAILS_DATA_REQUEST,
+  DETAILS_DATA_SUCCESS,
+  DETAILS_DATA_FAILURE
+} from '../types'
 
 const initialDetailsData = {
   loading: false,

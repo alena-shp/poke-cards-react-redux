@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router } from "react-router-dom"
-import { Route } from "react-router-dom"
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
-import Details from "./components/details"
-import Filter from "./components/filter"
-import List from "./components/list"
-import Ability from "./components/ability"
+import Details from './components/details'
+import Filter from './components/filter'
+import List from './components/list'
+import Ability from './components/ability'
 
 const App = () => {
   return (

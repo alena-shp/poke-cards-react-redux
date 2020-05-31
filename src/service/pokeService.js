@@ -53,8 +53,8 @@ export default class pokeService {
     }
   }
 
-  _transformAbility = (ability) => {
-    const description = ability.effect_entries.map((e) => e.effect)
+  _transformAbility = ability => {
+    const description = ability.effect_entries.map(e => e.effect)
     return description[0]
   }
 }
