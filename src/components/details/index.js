@@ -1,4 +1,5 @@
 import React from 'react'
+// import { Link } from "react-router-dom"
 import './details.scss'
 
 const Details = props => {
@@ -34,7 +35,7 @@ const Details = props => {
         <h3 className="details__abilities-title">Ability</h3>
         <p className="details__abilities-name">ability</p>
       </div>
-      <button onClick={() => {}}>Back</button>
+      <button onClick={() => props.history.goBack()}>Back</button>
     </div>
   )
 }

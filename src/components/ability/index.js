@@ -6,7 +6,7 @@ const Ability = props => {
     <div className="ability">
       <h1 className="ability__title">Ability</h1>
       <p className="ability__text">Text</p>
-      <button onClick={() => {}}>Back</button>
+      <button onClick={() => props.history.goBack()}>Back</button>
     </div>
   )
 }
