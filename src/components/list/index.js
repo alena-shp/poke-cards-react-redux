@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { namesFetch } from './../../actions/names'
-import { getFilteredName } from './../../selectors'
 import './list.scss'
 import Filter from './../filter'
 
-const List = ({ namesData, namesFetch, filteredNames }) => {
-  console.log(namesData)
+const List = ({ namesData, filteredNames }) => {
+  console.log(namesData, filteredNames)
   const { loading, err } = namesData
-  useEffect(() => {
-    namesFetch()
-  }, [namesFetch])
 
   const listItem =
     filteredNames.names &&
@@ -43,9 +37,4 @@ const List = ({ namesData, namesFetch, filteredNames }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  namesData: state.names,
-  filteredNames: getFilteredName(state)
-})
-
-export default connect(mapStateToProps, { namesFetch })(List)
+export default List
