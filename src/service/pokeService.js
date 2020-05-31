@@ -11,7 +11,7 @@ export default class pokeService {
 
   getAllPokemons = async () => {
     const res = await this.getAnswer(`/pokemon/`)
-    return res.results
+    return res.results.map(this._transformPokemon)
   }
 
   getPokemon = async id => {
@@ -22,5 +22,17 @@ export default class pokeService {
   detAbilityPokemon = async id => {
     const ability = await this.getAnswer(`/ability/${id}/`)
     return ability
+  }
+
+  getIdItem = item => {
+    const idRegExp = /\/([0-9]*)\/$/
+    return item.url.match(idRegExp)[1]
+  }
+
+  _transformPokemon = pokemon => {
+    return {
+      name: pokemon.name,
+      id: this.getIdItem(pokemon)
+    }
   }
 }
