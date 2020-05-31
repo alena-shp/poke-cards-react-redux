@@ -21,7 +21,7 @@ export default class pokeService {
 
   detAbilityPokemon = async id => {
     const ability = await this.getAnswer(`/ability/${id}/`)
-    return ability
+    return this._transformAbility(ability)
   }
 
   getIdItem = item => {
@@ -51,5 +51,10 @@ export default class pokeService {
       attack: details.stats[4].base_stat,
       hitPoints: details.stats[5].base_stat
     }
+  }
+
+  _transformAbility = (ability) => {
+    const description = ability.effect_entries.map((e) => e.effect)
+    return description[0]
   }
 }

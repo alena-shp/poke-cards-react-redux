@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import './details.scss'
 
 import { detailsFetch } from './../../actions/details'
@@ -14,6 +14,16 @@ const Details = props => {
   useEffect(() => {
     detailsFetch(id)
   }, [detailsFetch, id])
+
+  const ability =
+    abilities &&
+    abilities.map((e) => (
+      <ul key={e.id}>
+        <li>
+          <Link to={`/ability/${e.id}`}>{e.name}</Link>
+        </li>
+      </ul>
+    ))
 
   return loading ? (
     <p>Loading...</p>
@@ -49,7 +59,7 @@ const Details = props => {
       </div>
       <div className="details__abilities">
         <h3 className="details__abilities-title">Ability</h3>
-        <p className="details__abilities-name">ability</p>
+        {ability}
       </div>
       <button onClick={() => props.history.goBack()}>Back</button>
     </div>

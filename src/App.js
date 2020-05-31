@@ -14,7 +14,7 @@ const App = () => {
         <Filter />
         <Route path="/" component={List} exact />
         <Route path="/details/:id/" component={Details} exact />
-        <Route path="/ability" component={Ability} exact />
+        <Route path="/ability/:id/" component={Ability} exact />
       </div>
     </Router>
   )
