@@ -2,16 +2,17 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { namesFetch } from './../../actions/names'
+import { getFilteredName } from "./../../selectors"
 import './list.scss'
 
-const List = ({ namesData, namesFetch }) => {
+const List = ({ namesData, namesFetch, filteredNames }) => {
   console.log(namesData)
   const { loading, names, err } = namesData
   useEffect(() => {
     namesFetch()
   }, [namesFetch])
 
-  const listItem = names.map(item => {
+  const listItem = filteredNames.names && filteredNames.names.map(item => {
     return (
       <ul key={item.id}>
         <li>{item.name}</li>
@@ -27,7 +28,8 @@ const List = ({ namesData, namesFetch }) => {
 }
 
 const mapStateToProps = state => ({
-  namesData: state.names
+  namesData: state.names,
+  filteredNames: getFilteredName(state)
 })
 
 export default connect(mapStateToProps, { namesFetch })(List)
