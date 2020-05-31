@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import Details from './../components/details'
-import { detailsFetch } from './../actions/details'
+import Details from '../components/details'
+import { detailsFetch } from '../actions/details'
 
 const DetailsContainer = props => {
   const id = props.match.params.id

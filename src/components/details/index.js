@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './details.scss'
-
 import backImg from './../../assets/backImg.png'
 
 const Details = ({ detailsData, history }) => {

@@ -1,18 +1,9 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import './ability.scss'
+import backImg from './../../assets/backImg.png'
 
-import { abilityFetch } from './../../actions/ability'
-import backImg from "./../../assets/backImg.png"
-
-const Ability = props => {
-  const id = props.match.params.id
-  const { loading, ability, err } = props.abilityData
-
-  const { abilityFetch } = props
-  useEffect(() => {
-    abilityFetch(id)
-  }, [abilityFetch, id])
+const Ability = ({ history, abilityData }) => {
+  const { loading, ability, err } = abilityData
 
   return loading ? (
     <p className="loading">Loading...</p>
@@ -21,19 +12,12 @@ const Ability = props => {
   ) : (
     <div className="ability">
       <p className="ability__text">{ability}</p>
-      <span onClick={() => props.history.goBack()} className="action-back">
-        <img className="action-back__img" src={backImg} alt=""/>
-        Back</span>
+      <span onClick={() => history.goBack()} className="action-back">
+        <img className="action-back__img" src={backImg} alt="" />
+        Back
+      </span>
     </div>
   )
 }
 
-const mapStateToProps = state => ({ abilityData: state.ability })
-
-const mapDispatchToProps = dispatch => {
-  return {
-    abilityFetch: id => dispatch(abilityFetch(id))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Ability)
+export default Ability
