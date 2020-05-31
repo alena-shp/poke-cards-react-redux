@@ -11,7 +11,7 @@ export default class pokeService {
 
   getAllPokemons = async () => {
     const res = await this.getAnswer(`/pokemon/`)
-    return res
+    return res.results
   }
 
   getPokemon = async id => {
