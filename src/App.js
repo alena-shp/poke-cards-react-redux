@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import './App.scss'
-
 import ListContainer from './containers/list'
 import DetailsContainer from './containers/details'
 import AbilityContainer from './containers/ability'

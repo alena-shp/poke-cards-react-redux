@@ -27,4 +27,5 @@ const Filter = ({ filterPokemon }) => {
 const mapDispatchToProps = dispatch => ({
   filterPokemon: filterName => dispatch(filterPokemon(filterName))
 })
+
 export default connect(null, mapDispatchToProps)(Filter)
