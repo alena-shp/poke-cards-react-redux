@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from "react-redux"
 // import { Link } from "react-router-dom"
 import './details.scss'
 
+import { detailsFetch } from "./../../actions/details"
+
 const Details = props => {
-  return (
-    <div className="details">
+  const id = props.match.params.id
+  const { loading, details, err } = props.detailsData
+  console.log(details)
+
+  const { detailsFetch } = props
+  useEffect(() => {
+    detailsFetch(id)
+  }, [detailsFetch, id])
+
+  return loading ? ( <p>Loading...</p>) : err ? ( <p>{err}</p> ) : 
+  ( <div className="details">
       <h1 className="details__title">Name</h1>
       <div className="details__feature-block">
         <div className="details__item">
@@ -40,4 +52,12 @@ const Details = props => {
   )
 }
 
-export default Details
+const mapStateToProps = (state) => ({ detailsData: state.details })
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    detailsFetch: (id) => dispatch(detailsFetch(id)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details)
